@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col-lg-2"></div>
+  <div class="col-lg-6">
+    <nb-card size="giant">
+      <nb-card-header>
+        <input type="text" nbInput fullWidth placeholder="Search" [(ngModel)]="term" (input)="onSearch($event)">
+      </nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item class="contact" *ngFor="let el of data" >
+            <nb-user [picture]="el.picture" [name]="el.title? el.title : el.name" size="large"></nb-user>
+            <span class="album-title" *ngIf="el.title">{{el.name}} {{el.albumTitle}}</span>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
