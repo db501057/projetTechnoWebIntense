@@ -1,0 +1,28 @@
+<div>
+
+    <h1>{{data?.name}}</h1>
+
+    <div class info>
+
+        <div>Web site: {{data?.urlOfficialWebsite}}</div>
+        <div>Facebook: {{data?.urlFacebook}}</div>
+
+        <div class="location">
+            <div *ngIf="data?.locationInfo[0]">Country: {{data?.locationInfo[0]}}</div>
+            <div *ngIf="data?.locationInfo[1]">State: {{data?.locationInfo[1]}}</div>
+            <div *ngIf="data?.locationInfo[2]"> City: {{data?.locationInfo[2]}}</div>
+        </div>
+
+        <div class="genreMusical">
+            <ul>
+                <li *ngFor="let data?.genres of genre">{{genre}}</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div *ngIf="data.error || data = []">
+        Error: artist not found
+    </div>
+
+</div>

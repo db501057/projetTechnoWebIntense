@@ -7,7 +7,7 @@
       </nb-card-header>
       <nb-card-body>
         <nb-list>
-          <nb-list-item class="contact" *ngFor="let el of data" >
+          <nb-list-item class="contact" *ngFor="let el of data" (click)="viewDetails(el.name)">
             <nb-user [picture]="el.picture" [name]="el.title? el.title : el.name" size="large"></nb-user>
             <span class="album-title" *ngIf="el.title">{{el.name}} {{el.albumTitle}}</span>
           </nb-list-item>

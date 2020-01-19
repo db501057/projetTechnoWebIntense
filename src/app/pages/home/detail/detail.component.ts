@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Search} from '../../../@service/search';
-import {SearchService} from '../../../@service/search.service';
+import { ActivatedRoute, Params } from '@angular/router';
+
 import {isNullOrUndefined} from 'util';
+
+import {DetailsService} from '../../../@service/details.service';
 
 @Component({
   selector: 'ngx-detail',
@@ -11,26 +13,28 @@ import {isNullOrUndefined} from 'util';
 export class DetailComponent implements OnInit {
 
   term: string;
-  data: Search[];
+  data: any[];
+  artist: string
 
-  constructor(private searchService: SearchService) {
+  constructor(private detailsService: DetailsService, private route: ActivatedRoute,) {
 
   }
 
   ngOnInit() {
-
+    console.log(window.location.pathname.split("/")[4]);
+    //this.artist = window.location.pathname.split("/")[window.location.pathname.split("/").length];
+    this.artist = window.location.pathname.split("/")[4];
+    this.getArtist();
   }
 
-  private onSearch($event) {
-    if (!isNullOrUndefined(this.term) && this.term !== '') {
-      this.searchService.getArtistSongByTerm(this.term).subscribe(data => {
-        this.data = data;
-        console.log('>>>>>>', data);
+  private getArtist() {
+    this.detailsService.getArtist(this.artist).subscribe(data => {
+      this.data = data;
+      if (data.length == 0){
+        this.data = [];
+      }
       });
-    } else {
-      this.data = [];
-    }
-    console.log('>>>>>>', this.term, event);
-  }
+      console.log(this.data)
+    } 
 
 }

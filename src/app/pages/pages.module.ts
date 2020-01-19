@@ -16,7 +16,7 @@ import {HomeModule} from './home/home.module';
     HomeModule,
   ],
   declarations: [
-    PagesComponent,
+    PagesComponent
   ],
 })
 export class PagesModule {

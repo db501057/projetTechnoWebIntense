@@ -1,7 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {SearchService} from '../../../@service/search.service';
-import {Search} from '../../../@service/search';
+import { Router } from '@angular/router';
+
 import {isNullOrUndefined} from 'util';
+
+import {Search} from '../../../@service/search';
+import {SearchService} from '../../../@service/search.service';
 
 @Component({
   selector: 'ngx-search',
@@ -12,6 +15,7 @@ export class SearchComponent implements OnInit {
 
   term: string;
   data: Search[];
+
 
   constructor(private searchService: SearchService) {
 
@@ -31,6 +35,11 @@ export class SearchComponent implements OnInit {
       this.data = [];
     }
     console.log('>>>>>>', this.term, event);
+  }
+
+  public viewDetails(artist: string) {
+    console.log('work');
+    window.location.href = "pages/home/detail/" + artist;
   }
 
 }
