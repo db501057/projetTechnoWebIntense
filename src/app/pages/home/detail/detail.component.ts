@@ -1,7 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-
-import {isNullOrUndefined} from 'util';
 
 import {DetailsService} from '../../../@service/details.service';
 
@@ -16,7 +13,7 @@ export class DetailComponent implements OnInit {
   data: any[];
   artist: string
 
-  constructor(private detailsService: DetailsService, private route: ActivatedRoute,) {
+  constructor(private detailsService: DetailsService) {
 
   }
 
