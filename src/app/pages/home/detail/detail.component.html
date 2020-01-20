@@ -1,27 +1,48 @@
-<div>
+<div *ngIf="data._id">
 
-    <h1>{{data?.name}}</h1>
+    <div class="row d-inline-flex">
+        <h1>{{data?.name}}</h1>
+        <img src="{{data?.picture.medium}}" alt="">
+    </div>
+    
 
-    <div class info>
+    <div class info >
 
-        <div>Web site: {{data?.urlOfficialWebsite}}</div>
-        <div>Facebook: {{data?.urlFacebook}}</div>
+        <div *ngIf="data?.urlOfficialWebsite"><span class="h5">Web site:</span> <a href="{{data?.urlOfficialWebsite}}">{{data?.urlOfficialWebsite}}</a></div>
+        <div *ngIf="data?.urlFacebook"><span class="h5">Facebook:</span> <a href="{{data?.urlFacebook}}">{{data?.urlFacebook}}</a> </div>
 
-        <div class="location">
-            <div *ngIf="data?.locationInfo[0]">Country: {{data?.locationInfo[0]}}</div>
-            <div *ngIf="data?.locationInfo[1]">State: {{data?.locationInfo[1]}}</div>
-            <div *ngIf="data?.locationInfo[2]"> City: {{data?.locationInfo[2]}}</div>
+        <div class="location" *ngIf="data?.locationInfo">
+            <h4>Location</h4>
+            <table class="table">
+                <tr *ngIf="data?.locationInfo[0]">
+                    <td>Country</td>
+                    <td>{{data?.locationInfo[0]}}</td>
+                </tr>
+                <tr *ngIf="data?.locationInfo[1]">
+                    <td>State</td>
+                    <td>{{data?.locationInfo[1]}}</td>
+                </tr>
+                <tr *ngIf="data?.locationInfo[2]">
+                    <td>City</td>
+                    <td>{{data?.locationInfo[2]}}</td>
+                </tr>
+            </table>
+
         </div>
 
-        <div class="genreMusical">
-            <ul>
-                <li *ngFor="let data?.genres of genre">{{genre}}</li>
+        <br>
+
+        <div class="genreMusical" *ngIf="data.genres">
+            <h4>Genres</h4>
+            <ul class="list">
+                <li *ngFor="let genre of data.genres">{{genre}}</li>
             </ul>
         </div>
 
     </div>
 
-    <div *ngIf="data.error || data = []">
+
+    <div *ngIf="data == []">
         Error: artist not found
     </div>
 
