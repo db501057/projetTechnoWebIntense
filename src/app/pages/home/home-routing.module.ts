@@ -20,6 +20,11 @@ const routes: Routes = [{
     },
 
     {
+      path: 'stats',
+      component: SearchComponent,
+    },
+
+    {
       path: '',
       redirectTo: 'search',
       pathMatch: 'full',
