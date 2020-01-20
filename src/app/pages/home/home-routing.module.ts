@@ -5,6 +5,7 @@ import {HomeComponent} from './home.component';
 
 import {DetailComponent} from './detail/detail.component';
 import {SearchComponent} from './search/search.component';
+import { StatsComponent } from './stats/stats.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +22,7 @@ const routes: Routes = [{
 
     {
       path: 'stats',
-      component: SearchComponent,
+      component: StatsComponent,
     },
 
     {
