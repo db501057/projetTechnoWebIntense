@@ -26,7 +26,7 @@ export class DetailComponent implements OnInit {
   private getArtist() {
     this.detailsService.getArtist(this.artist).subscribe(data => {
       this.data = data;
-      if (data.length === 0){
+      if (data.length === 0)  {
         this.data = [];
       }
       });

@@ -25,8 +25,4 @@ export class StatsService {
   getArtistWithMostBand(): Observable<any[]> {
     return this.http.get<any[]>(environment.baseUrl + '/v1/artist/member/count/band');
   }
-
-  
-
-  
 }
