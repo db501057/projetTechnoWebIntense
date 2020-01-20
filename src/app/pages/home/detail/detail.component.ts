@@ -19,7 +19,6 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     console.log(window.location.pathname.split("/")[4]);
-    //this.artist = window.location.pathname.split("/")[window.location.pathname.split("/").length];
     this.artist = window.location.pathname.split("/")[4];
     this.getArtist();
   }
@@ -32,6 +31,6 @@ export class DetailComponent implements OnInit {
       }
       });
       console.log(this.data)
-    } 
+    }
 
 }
