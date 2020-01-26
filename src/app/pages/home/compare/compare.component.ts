@@ -22,6 +22,9 @@ export class CompareComponent implements OnInit {
   artist2Found: string;
   artist1Object: any;
   artist2Object: any;
+  finish1 = false;
+  finish2 = false;
+
 
 
   constructor(private detailsService: DetailsService, private searchService: SearchService) {
@@ -36,13 +39,27 @@ export class CompareComponent implements OnInit {
   searchArtist() {
     this.searchService.getArtistSongByTerm(this.artist1).subscribe(res => {
       this.artist1Found = res[0].name;
-      this.detailsService.getArtist(this.artist1Found).subscribe(res => this.artist1Object = res);
 
+      if(!res[0].name) {
+        this.artist1Object = []
+      } else {
+        this.detailsService.getArtist(this.artist1Found).subscribe(res => this.artist1Object = res);
+      }
+      
+      this.finish1 = true;
     });
 
     this.searchService.getArtistSongByTerm(this.artist2).subscribe(res => {
+      
       this.artist2Found = res[0].name
-      this.detailsService.getArtist(this.artist2Found).subscribe(res => this.artist2Object = res);
+
+      if(!res[0].name) {
+        this.artist2Object = []
+      } else {
+        this.detailsService.getArtist(this.artist2Found).subscribe(res => this.artist2Object = res);      
+      }
+      
+      this.finish2 = true;
     });
     
   }
@@ -54,6 +71,5 @@ export class CompareComponent implements OnInit {
     }
     return nbSongs;
   }
-
 
 }

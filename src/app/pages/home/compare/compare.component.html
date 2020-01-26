@@ -9,7 +9,7 @@
   </nb-card-body>
 </nb-card>
 
-<table class="table" *ngIf="artist1Object && artist2Object">
+<table class="table" *ngIf="artist1Object.length != 0 && artist2Object.length != 0">
   <tr>
     <th>Nom</th>
     <th class=""><h2>{{artist1Object.name}}</h2> <img src="{{artist1Object.picture.small}}" alt=""></th>
@@ -48,8 +48,8 @@
 
   <tr>
     <td>Nombres de chansons</td>
-    <td>{{getNumbersOfSong(artist1Object.albums.length)}}</td>
-    <td>{{getNumbersOfSong(artist2Object.albums.length)}}</td>
+    <td>{{getNumbersOfSong(artist1Object.albums)}}</td>
+    <td>{{getNumbersOfSong(artist2Object.albums)}}</td>
   </tr>
 
   <tr>
@@ -84,7 +84,12 @@
   
   <tr>
     <td>Url Deezer</td>
-    <td>{{artist1Object.urlDeezer}}</td>
-    <td>{{artist2Object.urlDeezer}}</td>
+    <td><a href="artist1Object.urlDeezer">{{artist1Object.urlDeezer}}</a></td>
+    <td><a href="artist2Object.urlDeezer">{{artist2Object.urlDeezer}}</a></td>
   </tr>
 </table>
+
+<div *ngIf="artist1Object.length == 0 || artist2Object.length == 0">
+  <div *ngIf="artist1Object.length == 0">Artiste 1 non trouvé</div>  
+  <div *ngIf="artist2Object.length == 0">Artiste 2 non trouvé</div>
+</div>
