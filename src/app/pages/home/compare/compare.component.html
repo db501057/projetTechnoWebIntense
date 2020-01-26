@@ -1,0 +1,90 @@
+<h1>Comparer 2 artistes</h1>
+
+
+<nb-card>
+  <nb-card-body class="row -d-inline-flex">
+    <input type="text" nbInput placeholder="Artiste 1" [(ngModel)]="artist1">
+    <input type="text" nbInput placeholder="Artiste 2" [(ngModel)]="artist2">
+    <input type="button" nbInput (click)="searchArtist()" value="Comparer">
+  </nb-card-body>
+</nb-card>
+
+<table class="table" *ngIf="artist1Object && artist2Object">
+  <tr>
+    <th>Nom</th>
+    <th class=""><h2>{{artist1Object.name}}</h2> <img src="{{artist1Object.picture.small}}" alt=""></th>
+    <th class="align-center"><h2>{{artist2Object.name}}</h2> <img src="{{artist2Object.picture.small}}" alt=""></th>
+  </tr>
+
+  <tr>
+    <td>Année de naissance</td>
+    <td>{{artist1Object.lifeSpan.begin}}</td>
+    <td>{{artist2Object.lifeSpan.begin}}</td>
+  </tr>
+
+  <tr>
+    <td>Année de dèces</td>
+    <td><span *ngIf="artist1Object.lifeSpan.end">{{artist1Object.lifeSpan.end}}</span><span *ngIf="artist1Object.lifeSpan.end">-</span></td>
+    <td><span *ngIf="artist2Object.lifeSpan.end">{{artist2Object.lifeSpan.end}}</span><span *ngIf="artist2Object.lifeSpan.end">-</span></td>
+  </tr>
+
+  <tr>
+    <td>Lieu de résidence</td>
+    <td>{{artist1Object.locationInfo[0]}} - {{artist1Object.locationInfo[1]}} - {{artist1Object.locationInfo[2]}}</td>
+    <td>{{artist2Object.locationInfo[0]}} - {{artist2Object.locationInfo[1]}} - {{artist2Object.locationInfo[2]}}</td>
+  </tr>
+
+  <tr>
+    <td>Nombre de groupe ou <span *ngIf="artist1Object.gender === Male">il</span><span *ngIf="artist2Object.gender === Female">elle</span> appartient</td>
+    <td>{{artist1Object.members.length}}</td>
+    <td>{{artist2Object.members.length}}</td>
+  </tr>
+
+  <tr>
+    <td>Nombres d'albums</td>
+    <td>{{artist1Object.albums.length}}</td>
+    <td>{{artist2Object.albums.length}}</td>
+  </tr>
+
+  <tr>
+    <td>Nombres de chansons</td>
+    <td>{{getNumbersOfSong(artist1Object.albums.length)}}</td>
+    <td>{{getNumbersOfSong(artist2Object.albums.length)}}</td>
+  </tr>
+
+  <tr>
+    <td>Genres</td>
+    <td><span *ngFor="let genre of artist1Object.genres">{{genre}} /</span></td>
+    <td><span *ngFor="let genre of artist2Object.genres">{{genre}} /</span></td>
+  </tr>
+
+  <tr>
+    <td>Labels</td>
+    <td><span *ngFor="let label of artist1Object.labels">{{label}} /</span></td>
+    <td><span *ngFor="let label of artist2Object.labels">{{label}} / </span></td>
+  </tr>
+
+  <tr>
+    <td>Fait notable</td>
+    <td>{{artist1Object.disambiguation}}</td>
+    <td>{{artist2Object.disambiguation}}</td>
+  </tr>
+
+  <tr>
+    <td>Site web officiel</td>
+    <td> <a href="artist1Object.urlOfficialWebsite">{{artist1Object.urlOfficialWebsite}}</a></td>
+    <td> <a href="artist2Object.urlOfficialWebsite">{{artist2Object.urlOfficialWebsite}}</a></td>
+  </tr>
+
+  <tr>
+    <td>Nombre de fans sur Deezer</td>
+    <td>{{artist1Object.deezerFans}}</td>
+    <td>{{artist2Object.deezerFans}}</td>
+  </tr>
+  
+  <tr>
+    <td>Url Deezer</td>
+    <td>{{artist1Object.urlDeezer}}</td>
+    <td>{{artist2Object.urlDeezer}}</td>
+  </tr>
+</table>
