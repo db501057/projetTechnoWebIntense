@@ -15,6 +15,6 @@ export class DetailsService {
   }
 
   getArtist(name: string): Observable<any[]> {
-    return this.http.get<any[]>(environment.baseUrl + '/api/v1/artist/name/' + name);
+    return this.http.get<any[]>(environment.baseUrl + '/api/v1/artist_all/name/' + name);
   }
 }
