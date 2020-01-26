@@ -1,1 +1,30 @@
 <h1>Statistiques</h1>
+
+<div class="genres">
+  <h4>Les genres les plus populaire</h4>
+  <table class="table">
+    <tr>
+      <th>Genre</th>
+      <th>Nombre d'album</th>
+    </tr>
+    <tr *ngFor="let genre of popularGenre">
+      <td>{{genre._id}}</td>
+      <td>{{genre.sum}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="mostAlbum">
+  <h4>Les artistes qui on le plus d'albums</h4>
+  <table class="table">
+    <tr>
+      <th>Artiste</th>
+      <th>Nombre d'album</th>
+    </tr>
+    <tr *ngFor="let artist of mostAlbum">
+      <td (click)="goToArtist(artist.name)">{{artist.name}}</td>
+      <td>{{artist.sum}}</td>
+    </tr>
+  </table>
+
+</div>

@@ -12,15 +12,33 @@ import { StatsService } from '../../../@service/stats.service';
 export class StatsComponent implements OnInit {
 
   term: string;
-  data: any[];
+  popularGenre: any[];
+  mostAlbum: any[];
+  
 
 
-  constructor(private searchService: StatsService) {
+  constructor(private statsService: StatsService) {
 
   }
 
   ngOnInit() {
+    this.statsService.getMostPopularGenre().subscribe(data => {
+      this.popularGenre = data;
+      if (data.length === 0)  {
+        this.popularGenre = [];
+      }
+      });
 
+      this.statsService.getArtistWithMostAlbum().subscribe(data => {
+        this.mostAlbum = data;
+        if (data.length === 0)  {
+          this.mostAlbum = [];
+        }
+        });
+  }
+
+  public goToArtist(artist) {
+    window.location.href='pages/home/detail/' + artist;
   }
 
 

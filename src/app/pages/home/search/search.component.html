@@ -6,8 +6,14 @@
         <input type="text" nbInput fullWidth placeholder="Search" [(ngModel)]="term" (input)="onSearch($event)">
       </nb-card-header>
       <nb-card-body>
-        <nb-list>
+        <nb-list *ngIf="activateClick">
           <nb-list-item class="contact" *ngFor="let el of data" (click)="viewDetails(el.name)">
+            <nb-user [picture]="el.picture" [name]="el.title? el.title : el.name" size="large"></nb-user>
+            <span class="album-title" *ngIf="el.title">{{el.name}} {{el.albumTitle}}</span>
+          </nb-list-item>
+        </nb-list>
+        <nb-list *ngIf="!activateClick">
+          <nb-list-item class="contact" *ngFor="let el of data" (click)="getArtist(el.name)">
             <nb-user [picture]="el.picture" [name]="el.title? el.title : el.name" size="large"></nb-user>
             <span class="album-title" *ngIf="el.title">{{el.name}} {{el.albumTitle}}</span>
           </nb-list-item>

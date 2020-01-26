@@ -20,6 +20,7 @@ import {ThemeModule} from '../../@theme/theme.module';
 import {HomeRoutingModule} from './home-routing.module';
 import {HomeComponent} from './home.component';
 
+import { CompareComponent } from './compare/compare.component';
 import {DetailComponent} from './detail/detail.component';
 import {SearchComponent} from './search/search.component';
 import { StatsComponent } from './stats/stats.component';
@@ -33,7 +34,8 @@ const declarations = [
   HomeComponent,
   DetailComponent,
   SearchComponent,
-  StatsComponent
+  StatsComponent,
+  CompareComponent
 ];
 
 const imports = [

@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import {isNullOrUndefined} from 'util';
 
@@ -15,13 +16,26 @@ export class SearchComponent implements OnInit {
   term: string;
   data: Search[];
 
+  @Input() activateClick: boolean
 
-  constructor(private searchService: SearchService) {
+  @Output() artist: EventEmitter<string> = new EventEmitter();
+
+
+
+  constructor(private searchService: SearchService, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
+    this.activateClick = this.getIsActivatedClick();
+  }
 
+  private getIsActivatedClick(): boolean{
+    let v;
+    this.route
+      .data
+      .subscribe((v => v.activateClick));
+    return v
   }
 
   private onSearch($event) {
@@ -39,6 +53,10 @@ export class SearchComponent implements OnInit {
   public viewDetails(artist: string) {
     console.log('work');
     window.location.href = "pages/home/detail/" + artist;
+  }
+
+  public getArtist(artist: string){
+    this.artist.emit(artist);
   }
 
 }
